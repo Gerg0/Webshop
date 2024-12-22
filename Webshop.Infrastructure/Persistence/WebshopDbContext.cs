@@ -10,8 +10,8 @@ internal class WebshopDbContext : DbContext
     {
 
     }
-    DbSet<Item> Items { get; set; }
-    DbSet<Vat> Vats { get; set; }
+    internal DbSet<Item> Items { get; set; }
+    internal DbSet<Vat> Vats { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

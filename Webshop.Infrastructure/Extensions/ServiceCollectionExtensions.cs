@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Webshop.Infrastructure.Persistence;
+using Webshop.Infrastructure.Seeders;
 
 namespace Webshop.Infrastructure.Extensions;
 public static class ServiceCollectionExtensions
@@ -10,5 +11,7 @@ public static class ServiceCollectionExtensions
     {
         var connectionString = configuration.GetConnectionString("WebshopDb");
         services.AddDbContext<WebshopDbContext>(options => options.UseSqlServer(connectionString));
+
+        services.AddScoped<IVatsSeeder, VatsSeeder>();
     }
 }

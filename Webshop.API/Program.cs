@@ -1,6 +1,7 @@
 using Serilog;
 using Webshop.API.Extensions;
 using Webshop.Infrastructure.Extensions;
+using Webshop.Infrastructure.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,11 +10,14 @@ builder.AddPresentation();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
+
+var scope = app.Services.CreateScope();
+var seeder = scope.ServiceProvider.GetRequiredService<IVatsSeeder>();
+await seeder.Seed();
+
 app.UseSerilogRequestLogging();
 
 
