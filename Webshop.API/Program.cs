@@ -1,7 +1,9 @@
 using Serilog;
 using Webshop.API.Extensions;
+using Webshop.Domain.Entities;
 using Webshop.Infrastructure.Extensions;
 using Webshop.Infrastructure.Seeders;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +31,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.MapIdentityApi<User>();
 
 app.UseAuthorization();
 
