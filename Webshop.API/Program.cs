@@ -11,9 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddPresentation();
 builder.Services.AddInfrastructure(builder.Configuration);
 
-
-
-
 var app = builder.Build();
 
 var scope = app.Services.CreateScope();
@@ -32,7 +29,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapIdentityApi<User>();
+app.MapGroup("api/identity").WithTags("Identity").MapIdentityApi<User>();
 
 app.UseAuthorization();
 

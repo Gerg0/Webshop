@@ -4,3 +4,20 @@ GET {{Webshop.API_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+POST {{Webshop.API_HostAddress}}/api/identity/register
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "Password1?"
+}
+
+
+###
+POST {{Webshop.API_HostAddress}}/api/identity/login
+Content-Type: application/json
+
+{
+   "email": "test@test.com",
+  "password": "Password1?"
+}
