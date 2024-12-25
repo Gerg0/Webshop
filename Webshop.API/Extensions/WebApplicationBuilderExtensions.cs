@@ -1,5 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 using Serilog;
+using Webshop.API.Middleware;
 
 namespace Webshop.API.Extensions;
 
@@ -10,6 +11,7 @@ public static class WebApplicationBuilderExtensions
         builder.Services.AddAuthentication();
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddScoped<ErrorHandlingMiddleware>();
         builder.Services.AddSwaggerGen(c =>
         {
             c.AddSecurityDefinition("bearerAuth", new OpenApiSecurityScheme
