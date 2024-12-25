@@ -12,12 +12,11 @@ Content-Type: application/json
   "password": "Password1?"
 }
 
-
 ###
 POST {{Webshop.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
-   "email": "test@test.com",
+   "email": "admin@test.com",
   "password": "Password1?"
 }
