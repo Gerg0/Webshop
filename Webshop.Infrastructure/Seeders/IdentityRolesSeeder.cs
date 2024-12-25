@@ -22,8 +22,12 @@ internal class IdentityRolesSeeder(WebshopDbContext dbContext) : ISeeder
     {
         List<IdentityRole> roles =
         [
-            new(UserRoles.Customer),
-            new(UserRoles.Admin),
+            new(UserRoles.Customer){
+                NormalizedName = UserRoles.Customer.ToUpper()
+            },
+            new(UserRoles.Admin){
+                NormalizedName = UserRoles.Admin.ToUpper()
+            },
         ];
         return roles;
     }
