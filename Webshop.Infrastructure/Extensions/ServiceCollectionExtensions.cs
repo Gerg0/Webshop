@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Webshop.Domain.Entities;
@@ -12,7 +13,9 @@ public static class ServiceCollectionExtensions
     {
         var connectionString = configuration.GetConnectionString("WebshopDb");
         services.AddDbContext<WebshopDbContext>(options => options.UseSqlServer(connectionString));
-        services.AddIdentityApiEndpoints<User>().AddEntityFrameworkStores<WebshopDbContext>();
+        services.AddIdentityApiEndpoints<User>()
+            .AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<WebshopDbContext>();
 
         services.AddScoped<ISeeder, VatsSeeder>();
         services.AddScoped<ISeeder, IdentityRolesSeeder>();
