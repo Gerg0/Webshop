@@ -1,5 +1,6 @@
 using Serilog;
 using Webshop.API.Extensions;
+using Webshop.API.Middleware;
 using Webshop.Application.Extensions;
 using Webshop.Domain.Entities;
 using Webshop.Infrastructure.Extensions;
@@ -27,6 +28,9 @@ app.UseSerilogRequestLogging();
 
 
 // Configure the HTTP request pipeline.
+
+app.UseMiddleware<ErrorHandlingMiddleware>();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
