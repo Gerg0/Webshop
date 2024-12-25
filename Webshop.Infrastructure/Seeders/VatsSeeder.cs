@@ -2,7 +2,7 @@
 using Webshop.Infrastructure.Persistence;
 
 namespace Webshop.Infrastructure.Seeders;
-internal class VatsSeeder(WebshopDbContext dbContext) : IVatsSeeder
+internal class VatsSeeder(WebshopDbContext dbContext) : ISeeder
 {
     public async Task Seed()
     {

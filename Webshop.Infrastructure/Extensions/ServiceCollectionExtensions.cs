@@ -14,6 +14,7 @@ public static class ServiceCollectionExtensions
         services.AddDbContext<WebshopDbContext>(options => options.UseSqlServer(connectionString));
         services.AddIdentityApiEndpoints<User>().AddEntityFrameworkStores<WebshopDbContext>();
 
-        services.AddScoped<IVatsSeeder, VatsSeeder>();
+        services.AddScoped<ISeeder, VatsSeeder>();
+        services.AddScoped<ISeeder, IdentityRolesSeeder>();
     }
 }

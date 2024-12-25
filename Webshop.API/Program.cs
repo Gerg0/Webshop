@@ -1,5 +1,6 @@
 using Serilog;
 using Webshop.API.Extensions;
+using Webshop.Application.Extensions;
 using Webshop.Domain.Entities;
 using Webshop.Infrastructure.Extensions;
 using Webshop.Infrastructure.Seeders;
@@ -10,12 +11,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.AddPresentation();
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
 var scope = app.Services.CreateScope();
-var seeder = scope.ServiceProvider.GetRequiredService<IVatsSeeder>();
-await seeder.Seed();
+var seeders = scope.ServiceProvider.GetServices<ISeeder>();
+foreach (var seeder in seeders)
+{
+    await seeder.Seed();
+}
+
 
 app.UseSerilogRequestLogging();
 

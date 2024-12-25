@@ -1,5 +1,5 @@
 ﻿namespace Webshop.Infrastructure.Seeders;
-public interface IVatsSeeder
+public interface ISeeder
 {
     Task Seed();
 }
