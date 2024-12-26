@@ -11,6 +11,6 @@ public class VatConfigurations : IEntityTypeConfiguration<Vat>
         builder.Property(x => x.CODE).IsRequired().HasColumnType("nvarchar(10)");
         builder.Property(x => x.Name).IsRequired().HasColumnType("nvarchar(10)");
         builder.Property(x => x.Value).IsRequired().HasColumnType("decimal(5, 2)");
-        builder.HasMany(x => x.Items).WithOne(x => x.Vat).HasForeignKey(x => x.VatId).IsRequired();
+        builder.HasMany(x => x.Items).WithOne(x => x.Vat).HasForeignKey(x => x.VatId).IsRequired().OnDelete(DeleteBehavior.NoAction);
     }
 }

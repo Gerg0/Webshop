@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Webshop.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using Webshop.Infrastructure.Persistence;
 namespace Webshop.Infrastructure.Migrations
 {
     [DbContext(typeof(WebshopDbContext))]
-    partial class WebshopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241226123310_ModifiedDecimalsInItem")]
+    partial class ModifiedDecimalsInItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -340,7 +343,7 @@ namespace Webshop.Infrastructure.Migrations
                     b.HasOne("Webshop.Domain.Entities.Vat", "Vat")
                         .WithMany("Items")
                         .HasForeignKey("VatId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Vat");
