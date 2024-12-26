@@ -8,6 +8,6 @@ public class Item
     public string Currency { get; set; } = string.Empty;
     public decimal UnitAmount { get; set; }
     public string UnitOfMeasurement { get; set; } = string.Empty;
-    public Vat Vat { get; set; } = new Vat();
+    public Vat Vat { get; set; } = null!;
     public int VatId { get; set; }
 }
