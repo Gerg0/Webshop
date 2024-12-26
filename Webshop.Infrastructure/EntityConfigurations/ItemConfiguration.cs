@@ -11,6 +11,9 @@ public class ItemConfiguration : IEntityTypeConfiguration<Item>
         builder.Property(x => x.Name).IsRequired().HasColumnType("nvarchar(500)");
         builder.Property(x => x.Description).IsRequired().HasColumnType("nvarchar(max)");
         builder.Property(x => x.GrossPrice).IsRequired().HasColumnType("decimal(5, 2)");
+        builder.Property(x => x.Currency).IsRequired().HasColumnType("varchar(3)");
+        builder.Property(x => x.UnitAmount).IsRequired().HasColumnType("decimal(5, 2)");
+        builder.Property(x => x.UnitOfMeasurement).IsRequired().HasColumnType("nvarchar(50)");
 
     }
 }
