@@ -1,7 +1,5 @@
-@Webshop.API_HostAddress = http://localhost:5066
+@Webshop.API_HostAddress = https://localhost:7050
 
-GET {{Webshop.API_HostAddress}}/weatherforecast/
-Accept: application/json
 
 ###
 POST {{Webshop.API_HostAddress}}/api/identity/register
@@ -20,3 +18,9 @@ Content-Type: application/json
    "email": "admin@test.com",
   "password": "Password1?"
 }
+
+###
+
+GET {{Webshop.API_HostAddress}}/api/items
+
+###

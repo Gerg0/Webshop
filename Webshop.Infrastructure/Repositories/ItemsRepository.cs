@@ -9,7 +9,7 @@ internal class ItemsRepository(WebshopDbContext dbContext) : IItemsRepository
 
     public async Task<IEnumerable<Item>> GetAllAsync()
     {
-        var items = await dbContext.Items.ToListAsync();
+        var items = await dbContext.Items.Include(x => x.Vat).ToListAsync();
         return items;
     }
 
