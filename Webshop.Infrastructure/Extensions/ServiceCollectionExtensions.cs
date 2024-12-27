@@ -3,7 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Webshop.Domain.Entities;
+using Webshop.Domain.Repositories;
 using Webshop.Infrastructure.Persistence;
+using Webshop.Infrastructure.Repositories;
 using Webshop.Infrastructure.Seeders;
 
 namespace Webshop.Infrastructure.Extensions;
@@ -20,5 +22,6 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ISeeder, VatsSeeder>();
         services.AddScoped<ISeeder, IdentityRolesSeeder>();
         services.AddScoped<ISeeder, ItemSeeder>();
+        services.AddScoped<IItemsRepository, ItemsRepository>();
     }
 }
